@@ -2,8 +2,16 @@
 let foodStatus = document.getElementsByClassName('menuItem');
 let foodItems = document.getElementsByClassName('menuText');
 
+function Green() {
+    this.style.backgroundColor = 'green';
+    this.removeEventListener('click', Green);
+    this.addEventListener('click', changeToRed, false)
+}
+
 function changeToRed() {
-    this.style.backgroundColor = 'red'
+    this.style.backgroundColor = 'red';
+    this.removeEventListener('click', changeToRed);
+    this.addEventListener('click', Green);
 }
 
 var editable = (document.getElementsByClassName('menuItem'));
@@ -40,4 +48,6 @@ position.removeChild(editable[0]);
 //make divs listen to clicks
 for (let i = 0; i<foodStatus.length; i++) {
     foodStatus[i].addEventListener('click', changeToRed, false);
+
     }
+
